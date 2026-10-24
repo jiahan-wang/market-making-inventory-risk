@@ -266,13 +266,20 @@ python -m pip install -r requirements-plot.txt
 python tools/run_all.py --figures
 ```
 
-`tools/ci_check.py` reruns the stage 7 experiment into `.ci_repro` and compares every
-table byte for byte against the committed copies. `run_all.py` is held to the same
-standard: rebuilding all eight stages leaves the working tree unmodified. GitHub
-Actions runs the tests and that check on 3.10, 3.11 and 3.12 under both Ubuntu and
-Windows. Windows is in the matrix on purpose. The tables are text, the checkout is
-forced to LF by `.gitattributes`, and Python's `write_text` defaults to CRLF there,
-which is enough to make a correct regeneration look like a difference.
+`tools/ci_check.py` reruns the stage 7 experiment into `.ci_repro` and compares the
+result with the committed tables: text cells exactly, numbers to 1e-9. `--strict`
+asks for byte equality instead, which is what you get on the machine that generated
+the files. Across machines it does not hold, and the reason is worth knowing: the
+price paths come from `random.gauss`, which goes through libm, and CPython 3.12
+changed built-in `sum` for floats, so the fifteenth digit of every aggregate moves.
+The decisions do not move. The round-level ledger of the selected market is
+byte-identical on every runner; only the summary tables drift. The tolerance is set
+to admit that and nothing wider.
+
+GitHub Actions runs the tests and that check on 3.10, 3.11 and 3.12 under both
+Ubuntu and Windows. Windows is in the matrix on purpose. The tables are text, the
+checkout is forced to LF by `.gitattributes`, and Python's `write_text` defaults to
+CRLF there, which is enough to make a correct regeneration look like a difference.
 
 ## References
 
