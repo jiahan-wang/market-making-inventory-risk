@@ -1,0 +1,25 @@
+Stage 7: stressed participation floor and paid external hedging
+Candidate grid: 39 unhedged plus 20 hedged configurations.
+Grid drafting used a 30-market stressed exercise on the stage 6 generator; selection below does not.
+Splits: 360 train, 240 validation, 360 final markets, 150 rounds each.
+Screens: stressed mean maxDD<=1; all-regime mean maxDD<=1; Wilson upper tail-event rate<=5%;
+  stressed mean fill rate >= 20% (a participation floor, not an exchange obligation).
+  |q|<=5 is enforced inside simulate(); reported, not gated.
+Unhedged candidates meeting the stressed risk and participation screens in train: 0/39.
+Extended grid train feasible: 6/20.
+All-grid train feasible: 6/59.
+Validated candidates checked: 2; selected: Policy(name='D_external_hedge', base_half_spread=0.09, inventory_alpha=0.024, volatility_beta=0.4, hedge_threshold=1).
+Hedges are struck at the mid that becomes public after the fill, plus a fixed half-spread and fee;
+  assumed infinite depth and immediate execution: no venue impact, latency or regime-dependent spread.
+stage7_selected: pnl=3.3339; meanMaxDD=0.4467; stressMaxDD=0.9319; stressFill=29.70%; hedgeCost=0.3614; constraintScreen=True
+stage6_risk_only: pnl=1.7514; meanMaxDD=0.6174; stressMaxDD=0.9098; stressFill=4.73%; hedgeCost=0.0000; constraintScreen=False
+stage5_reference: pnl=3.5612; meanMaxDD=0.7820; stressMaxDD=1.4835; stressFill=29.67%; hedgeCost=0.0000; constraintScreen=False
+HEDGE COST SENSITIVITY: hedgeHalfSpread=0.025; pnl=3.3339; stressMaxDD=0.9319 [0.8631,1.0047]; stressFill=29.70%
+HEDGE COST SENSITIVITY: hedgeHalfSpread=0.050; pnl=3.0328; stressMaxDD=0.9767 [0.9048,1.0532]; stressFill=29.70%
+HEDGE COST SENSITIVITY: hedgeHalfSpread=0.075; pnl=2.7316; stressMaxDD=1.0264 [0.9497,1.1079]; stressFill=29.70%
+HEDGE COST SENSITIVITY: hedgeHalfSpread=0.100; pnl=2.4304; stressMaxDD=1.0829 [1.0017,1.1697]; stressFill=29.70%
+Paired difference vs stage6_risk_only / net_pnl: +1.5826 approx 95% [+1.4365,+1.7287]
+Paired difference vs stage6_risk_only / max_drawdown: -0.1706 approx 95% [-0.2162,-0.1251]
+Paired difference vs stage5_reference / net_pnl: -0.2273 approx 95% [-0.3075,-0.1471]
+Paired difference vs stage5_reference / max_drawdown: -0.3353 approx 95% [-0.3752,-0.2954]
+Selection and screens are finite-sample and conditional on this generator, including the assumed hedge venue.

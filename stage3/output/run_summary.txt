@@ -1,0 +1,24 @@
+Stage 3: quoting under adverse selection with adaptive spreads
+Training: 30 independent seeds per regime x 3 regimes; separate tuning per strategy family
+Final split: 120 seeds per regime x 3 regimes = 360 matched markets; 150 rounds/market
+Order flow is synthetic; intervals describe this generator only.
+Selected policies (shared training objective):
+  A_fixed: base_half_spread=0.09, inventory_alpha=0.0, volatility_beta=0.0
+  B_inventory: base_half_spread=0.09, inventory_alpha=0.008, volatility_beta=0.0
+  C_vol_adaptive: base_half_spread=0.09, inventory_alpha=0.016, volatility_beta=0.4
+
+Final split: aggregation across regimes (equal weighting):
+  A_fixed: net_pnl=3.4716 (sd=3.3918), |inventory|=2.492, maxDD=2.291, fill rate=40.8%
+  B_inventory: net_pnl=3.4410 (sd=2.5539), |inventory|=1.554, maxDD=1.435, fill rate=43.9%
+  C_vol_adaptive: net_pnl=3.4074 (sd=1.8602), |inventory|=1.084, maxDD=0.818, fill rate=42.2%
+
+Stressed regime (informed share 0.70, price sigma 0.12):
+  A_fixed: net_pnl=1.4414, mean informed markout=0.0034, noise markout=0.0885, fill=40.9%
+  B_inventory: net_pnl=1.1669, mean informed markout=-0.0005, noise markout=0.0834, fill=43.7%
+  C_vol_adaptive: net_pnl=1.5618, mean informed markout=0.0174, noise markout=0.1054, fill=29.2%
+  B_inventory minus A_fixed (net_pnl): difference -0.0306, approximate 95% interval [-0.2379, 0.1767]
+  B_inventory minus A_fixed (max_drawdown): difference -0.8561, approximate 95% interval [-0.9955, -0.7167]
+  C_vol_adaptive minus B_inventory (net_pnl): difference -0.0336, approximate 95% interval [-0.1662, 0.0989]
+  C_vol_adaptive minus B_inventory (max_drawdown): difference -0.6172, approximate 95% interval [-0.7124, -0.5221]
+  C_vol_adaptive minus A_fixed (net_pnl): difference -0.0642, approximate 95% interval [-0.3311, 0.2027]
+  C_vol_adaptive minus A_fixed (max_drawdown): difference -1.4733, approximate 95% interval [-1.6649, -1.2817]

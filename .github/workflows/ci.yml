@@ -1,0 +1,28 @@
+name: tests and reproduction
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit tests (standard library only)
+        run: python -m unittest discover -s tests -v
+      - name: Style, imports and line endings
+        run: python tools/style_check.py
+      - name: Regenerate stage 7 and diff against the committed tables
+        run: python tools/ci_check.py

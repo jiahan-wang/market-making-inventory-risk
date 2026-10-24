@@ -1,0 +1,10 @@
+Stage 6: stressed-regime drawdown budget, model-generated markets
+Terminal liquidation is part of both the drawdown path and net P&L.
+39 stated candidates; 360 train / 240 validation / 360 final markets.
+Budget: overall mean DD <= 1.0; stressed mean DD <= 1.0;
+  Wilson upper 95% tail rate for net PnL < -2.0 <= 0.05.
+  |q| <= 5 is enforced inside simulate(); reported, not gated.
+Train feasible: 1 / 39.
+Validation candidates checked: 1.
+Selected policy: None.
+No feasible policy on train and validation; the final split was not read.

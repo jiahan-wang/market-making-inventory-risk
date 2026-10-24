@@ -1,0 +1,3 @@
+﻿strategy,scenarios,mean_pnl_after_liquidation,std_pnl_after_liquidation,fraction_positive_pnl,mean_fill_rate,mean_abs_inventory,mean_max_drawdown
+fixed,200,1.929101453507693,0.9147091859347287,0.975,0.4595,2.4397,0.575978448169963
+inventory_aware,200,1.9223758636510075,0.5092151810483083,1.0,0.49645,1.20125,0.241221092008738

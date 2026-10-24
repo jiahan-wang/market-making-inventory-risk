@@ -1,0 +1,2 @@
+﻿split,strategy,base_half_spread,inventory_alpha,volatility_beta,markets,mean_net_pnl,sd_net_pnl,mean_max_drawdown,mean_abs_inventory,mean_fill_rate,max_abs_inventory_observed,tail_loss_count,tail_loss_rate,tail_loss_wilson_upper95,pnl_5pct,feasible_validation,dd_pass_probability
+validation,C_vol_adaptive,0.09,0.016,0.4,240,3.440943114662476,1.8520154285153705,0.795882285182471,1.0885555555555555,0.42594444444444446,5,3,0.0125,0.030862385856224896,-0.6013281259528048,True,1.0

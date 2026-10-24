@@ -1,0 +1,13 @@
+﻿dataset,strategy,metric,n_paired,mean_low_minus_original,ci95_low_approx,ci95_high_approx
+fresh_confirmation_240,A_fixed,net_pnl,240,0.0,0.0,0.0
+fresh_confirmation_240,A_fixed,max_drawdown,240,0.0,0.0,0.0
+fresh_confirmation_240,A_fixed,avg_abs_inventory,240,0.0,0.0,0.0
+fresh_confirmation_240,A_fixed,fill_rate,240,0.0,0.0,0.0
+fresh_confirmation_240,B_inventory,net_pnl,240,0.0,0.0,0.0
+fresh_confirmation_240,B_inventory,max_drawdown,240,0.0,0.0,0.0
+fresh_confirmation_240,B_inventory,avg_abs_inventory,240,0.0,0.0,0.0
+fresh_confirmation_240,B_inventory,fill_rate,240,0.0,0.0,0.0
+fresh_confirmation_240,C_vol_adaptive,net_pnl,240,0.1934935982117333,0.08669789266924176,0.3002893037542248
+fresh_confirmation_240,C_vol_adaptive,max_drawdown,240,0.38236463745935706,0.3074280074712431,0.457301267447471
+fresh_confirmation_240,C_vol_adaptive,avg_abs_inventory,240,0.42186111111111113,0.3914177042809343,0.45230451794128795
+fresh_confirmation_240,C_vol_adaptive,fill_rate,240,-0.0021666666666666687,-0.0046885612830655995,0.0003552279497322625

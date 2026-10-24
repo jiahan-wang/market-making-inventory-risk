@@ -1,0 +1,7 @@
+# Normalise line endings so a clone reproduces the committed byte counts.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.gif binary
+# Generated tables are written with a UTF-8 BOM for Excel; keep them verbatim.
+*.csv text eol=crlf working-tree-encoding=UTF-8

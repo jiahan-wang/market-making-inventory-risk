@@ -1,0 +1,22 @@
+Stage 5: risk-budget selection on model-generated markets
+Splits: 360 train / 240 validation / 360 final markets; 3 regimes equally weighted; 150 rounds each.
+Risk budget: mean maxDD <= 1.0; Wilson upper bound P(netPnL<-2.0)<=0.05; max |inventory|<=5.
+Pooled Wilson bound over a stratified mixture; treat it as a screen, not a guarantee.
+Train-feasible candidates: 13 / 39.
+Validation candidates screened until one passed: 1.
+SELECTED: Policy(name='C_vol_adaptive', base_half_spread=0.09, inventory_alpha=0.016, volatility_beta=0.4)
+Highest training P&L, feasibility not checked: Policy(name='C_vol_adaptive', base_half_spread=0.09, inventory_alpha=0.008, volatility_beta=0.4)
+
+Final split (360 markets):
+budget_selected: PnL=3.3926, SD=1.8769, avgDD=0.8553, tail<-2=4/360 (1.11%), WilsonUpper95=2.45%, avg|q|=1.104, fill=42.54%, test risk screen=True
+train_pnl_max: PnL=3.5500, SD=2.2266, avgDD=1.2576, tail<-2=6/360 (1.67%), WilsonUpper95=3.19%, avg|q|=1.534, fill=42.21%, test risk screen=False
+fixed_baseline: PnL=3.2520, SD=3.4975, avgDD=2.3980, tail<-2=33/360 (9.17%), WilsonUpper95=11.98%, avg|q|=2.532, fill=40.79%, test risk screen=False
+stage4_original: PnL=3.1968, SD=1.6262, avgDD=0.6727, tail<-2=3/360 (0.83%), WilsonUpper95=2.07%, avg|q|=0.896, fill=42.46%, test risk screen=True
+
+COMPARISONS (BUDGET SELECTED - BENCHMARK):
+budget_selected minus train_pnl_max net_pnl: -0.1574; approx 95% [-0.2469, -0.0680]
+budget_selected minus train_pnl_max max_drawdown: -0.4023; approx 95% [-0.4636, -0.3410]
+budget_selected minus fixed_baseline net_pnl: +0.1406; approx 95% [-0.1336, +0.4148]
+budget_selected minus fixed_baseline max_drawdown: -1.5427; approx 95% [-1.7430, -1.3424]
+budget_selected minus stage4_original net_pnl: +0.1958; approx 95% [+0.1373, +0.2542]
+budget_selected minus stage4_original max_drawdown: +0.1826; approx 95% [+0.1496, +0.2157]
